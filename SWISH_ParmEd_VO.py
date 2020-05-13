@@ -272,7 +272,7 @@ def create_LJtypes(input_parm):
 
         else:
             print("WARNING: atomtype %s already exists!\n" % (new_atype))
-            print input_parm.LJ_types.keys()
+            print(input_parm.LJ_types.keys())
             exit(4)
 
     input_parm.parm_comments['USER_COMMENTS'] += ['New atomtypes created for preferred binding site residues:',\
@@ -331,7 +331,7 @@ def scale_LJPairs(input_parm, atomtypes_changed, sfactor, verbose=False):
         # use atype.replace("*", "\*") in selection to avoid wild-card results!
         # strangely "\*" works instead of "'*'" here, unlike in the ParmEd manual
         # on selection masks - http://parmed.github.io/ParmEd/html/parmed.html#atom-selection-masks
-        print atype, OW_type
+        print(atype, OW_type)
 	act_changeLJPair = parmed.tools.actions.changeLJPair(input_parm, "@%" + atype.replace("*", "\\\*"), "@%"+OW_type.replace("_","\\\_"), Rmin_iOW, eps_iOW)
         # write action to log
         if list(act_changeLJPair.mask1.Selected()) == []:
