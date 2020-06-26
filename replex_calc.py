@@ -33,11 +33,11 @@ def main(argv):
 	try:
 		opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
 	except getopt.GetoptError:
-		print 'test.py -i <inputfile> -o <outputfile>'
+		print('test.py -i <inputfile> -o <outputfile>')
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
-			print './exch.rex.py -i <inputfile> -o <outputfile>'
+			print('./exch.rex.py -i <inputfile> -o <outputfile>')
 			sys.exit()
 		elif opt in ("-i", "--ifile"):
 			inputfile = arg
@@ -45,8 +45,8 @@ def main(argv):
 			outputfile = arg
 	if len(inputfile)==0: inputfile="./md0.log"
 	if len(outputfile)==0: outputfile="Repl_ex.png"
-	print 'Input file is "', inputfile
-	print 'Output file is "', outputfile
+	print('Input file is "', inputfile)
+	print('Output file is "', outputfile)
 	
 	N = re.compile(r'There.are.(?P<num>[0-9]+).repl')
 
@@ -54,14 +54,14 @@ def main(argv):
 		m = N.search(line)
 		if m:
 			num = int(m.group('num'))
-			print "Found "+str(num)+" replicas"
+			print("Found "+str(num)+" replicas")
 
 	#build match string
 	remat = ""
 	for i in range(num):
 		remat = remat + str(i) + "(?P<r" + str(i) +">.*)"
 
-	print remat 
+	print(remat)
 	EX = re.compile(remat)
 	X = re.compile(r'x')
 
@@ -113,7 +113,7 @@ def main(argv):
 	# Report final result to stdout!
 	for i in range(num-1):
 		final_accept = 100 * count[i] / (0.5 * total)
-		print "Exchange %2d-%2d acceptance = %.2f" % (i, i+1, final_accept)
+		print("Exchange %2d-%2d acceptance = %.2f" % (i, i+1, final_accept))
 
 	
 	# Load data for the quick plot!
